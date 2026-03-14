@@ -1,0 +1,169 @@
+j1=int(input("capacity of jug1 "))
+j2=int(input("capacity of jug2 "))
+g=int(input("Amount of water to be measured :"))
+def display():
+  print("\n  select the rule to be applied")
+  print("Rule 1 : Fill jug1")
+  print("Rule 2 : Fill jug2")
+  print("Rule 3: Empty jug1")
+  print("Rule 4 : Empty jug2")
+  print("Rule 5 : pour jug1 water to jug2")
+  print("Rule 6 : pour jug2 waer to jug1")
+  print("Rule 7 : Transfer some water from jug1 to jug2 until jug2 is fill")
+  print("Rule 8 : Transfer some water from jug2 to jug1 until jug1 is fill")
+def apply_rule(ch,x,y):
+  if ch==1:
+    if x<j1:
+      return j1,y
+    else:
+          print("rule cannot be applied")
+          return x,y
+  elif ch==2:
+    if y<j2:
+      return x,j2
+    else:
+          print("rule cannot be applied")
+          return x,y
+  elif ch==3:
+    if x>0:
+      return 0,y
+    else:
+          print("rule cannot be applied")
+          return x,y
+  elif ch==4:
+    if y>0:
+      return x,0
+    else:
+          print("rule cannot be applied")
+          return x,y
+  elif ch==5:
+    if x>0 and x+y<=j2:
+      return 0,x+y
+    else:
+          print("rule cannot be applied")
+          return x,y
+  elif ch==6:
+    if y>0 and x+y<=j1:
+      return x+y,0
+    else:
+          print("rule cannot be applied")
+          return x,y
+  elif ch==7:
+    if x>0 and x+y>=j2:
+      return x-(j2-y),j2
+    else:
+          print("rule cannot be applied")
+          return x,y
+  elif ch==8:
+    if y>0 and x+y>=j1:
+      return j1,y-(j1-x)
+    else:
+          print("rule cannot be applied")
+          return x,y
+  else:
+     print("INVALID CHOICE")
+
+x=y=0
+while(True):
+  if(x==g):
+    print("GOAL ACHIEVED")
+    break
+  else:
+      display()
+      ch = int(input("ENer rule to be apply "))
+      x,y = apply_rule(ch,x,y)
+      print("\nStatus")
+      print("Current state: ",end =" ")
+      print(x,y)
+
+
+output
+
+capacity of jug1 4
+capacity of jug2 3
+Amount of water to be measured :2
+
+  select the rule to be applied
+Rule 1 : Fill jug1
+Rule 2 : Fill jug2
+Rule 3: Empty jug1
+Rule 4 : Empty jug2
+Rule 5 : pour jug1 water to jug2
+Rule 6 : pour jug2 waer to jug1
+Rule 7 : Transfer some water from jug1 to jug2 until jug2 is fill
+Rule 8 : Transfer some water from jug2 to jug1 until jug1 is fill
+ENer rule to be apply 2
+
+Status
+Current state:  0 3
+
+  select the rule to be applied
+Rule 1 : Fill jug1
+Rule 2 : Fill jug2
+Rule 3: Empty jug1
+Rule 4 : Empty jug2
+Rule 5 : pour jug1 water to jug2
+Rule 6 : pour jug2 waer to jug1
+Rule 7 : Transfer some water from jug1 to jug2 until jug2 is fill
+Rule 8 : Transfer some water from jug2 to jug1 until jug1 is fill
+ENer rule to be apply 6
+
+Status
+Current state:  3 0
+
+  select the rule to be applied
+Rule 1 : Fill jug1
+Rule 2 : Fill jug2
+Rule 3: Empty jug1
+Rule 4 : Empty jug2
+Rule 5 : pour jug1 water to jug2
+Rule 6 : pour jug2 waer to jug1
+Rule 7 : Transfer some water from jug1 to jug2 until jug2 is fill
+Rule 8 : Transfer some water from jug2 to jug1 until jug1 is fill
+ENer rule to be apply 2
+
+Status
+Current state:  3 3
+
+  select the rule to be applied
+Rule 1 : Fill jug1
+Rule 2 : Fill jug2
+Rule 3: Empty jug1
+Rule 4 : Empty jug2
+Rule 5 : pour jug1 water to jug2
+Rule 6 : pour jug2 waer to jug1
+Rule 7 : Transfer some water from jug1 to jug2 until jug2 is fill
+Rule 8 : Transfer some water from jug2 to jug1 until jug1 is fill
+ENer rule to be apply 8
+
+Status
+Current state:  4 2
+
+  select the rule to be applied
+Rule 1 : Fill jug1
+Rule 2 : Fill jug2
+Rule 3: Empty jug1
+Rule 4 : Empty jug2
+Rule 5 : pour jug1 water to jug2
+Rule 6 : pour jug2 waer to jug1
+Rule 7 : Transfer some water from jug1 to jug2 until jug2 is fill
+Rule 8 : Transfer some water from jug2 to jug1 until jug1 is fill
+ENer rule to be apply 3
+
+Status
+Current state:  0 2
+
+  select the rule to be applied
+Rule 1 : Fill jug1
+Rule 2 : Fill jug2
+Rule 3: Empty jug1
+Rule 4 : Empty jug2
+Rule 5 : pour jug1 water to jug2
+Rule 6 : pour jug2 waer to jug1
+Rule 7 : Transfer some water from jug1 to jug2 until jug2 is fill
+Rule 8 : Transfer some water from jug2 to jug1 until jug1 is fill
+ENer rule to be apply 6
+
+Status
+Current state:  2 0
+GOAL ACHIEVED
